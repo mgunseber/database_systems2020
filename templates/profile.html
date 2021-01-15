@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="title">
+    Welcome {{user.name}} !
+</h1>
+
+<div class="row">
+    <div class="col-md-7">
+        <b>Your Favourite Events</b>
+        <table class="table1 fav-table">
+            <thead>
+                <tr>
+                    <th scope="col">Favourite Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Event Location</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for f in eventlist %}
+                <tr>
+                    <td>{{f[0][0]}}</td>
+                    <td>{{f[0][1]}}</td>
+                    <td>{{f[0][2]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+    <div class="col-md-5">
+        <b>User Information</b>
+        <table class="table2">
+
+
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{user.name}}</td>
+            </tr>
+
+            <tr>
+                <th scope="row">Age</th>
+                <td>{{user.age}}</td>
+            </tr>
+            <tr>
+                <th scope="row">e_mail</th>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Gender</th>
+                <td>{{user.gender}}</td>
+            </tr>
+
+
+        </table>
+    </div>
+</div>
+{% endblock %}

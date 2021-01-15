@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Event Name</th>
+            <th scope="col">Event Date</th>
+            <th scope="col">Event Location</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for e in event %}
+        <tr>
+
+
+            <td><a class="like-link" href="/event?event_id={{e[3]}}">{{e[0]}}</a></td>
+
+            <td>{{e[1]}}</td>
+            <td>{{e[2]}}</td>
+
+            <td><a class="like-link" href="/like?event_id={{e[3]}}">Like</a></td>
+            <td><a class="like-link" href="/event?event_id={{e[3]}}">Comment</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+
+
+
+
+
+
+
+{% endblock %}
