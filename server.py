@@ -60,7 +60,7 @@ for e_property in theater:
     command_select = f"SELECT event_type_id FROM event_type_id WHERE (event_type = '{word}')"
     cursor.execute(command_select)
     answer = cursor.fetchone()
-    print(answer)
+
     command_INSERT = f"INSERT INTO event(event_name, location, date1, event_type_number) VALUES('{eventName}','{eventLoc}','{eventDate}',(SELECT event_type_id FROM event_type_id WHERE (event_type = '{word}')))"
 
     try:
@@ -484,7 +484,6 @@ def theater_pageUpdate():
             req = request.form
             if request.method == 'POST':
                 location = req.get("location")
-                print(location)
 
             update_command = f"UPDATE event SET location='{location}' WHERE (event_id = {event_id})"
 
@@ -631,7 +630,6 @@ def event():
     selectcommand = f"SELECT event_name,date1,location FROM event WHERE (event_id = {event_id})"
     cursor.execute(selectcommand)
     event = cursor.fetchall()
-    print(event)
 
     user = None
 
@@ -645,8 +643,6 @@ def event():
         req = request.form
         if request.method == 'POST':
             comment = req.get("comment")
-            print(comment)
-            print(comment)
 
             try:
                 insert_command = "INSERT INTO comment(event_number,user_number,comment) VALUES(%s,%s,%s)"
@@ -676,7 +672,8 @@ def event():
 
     except:
         pass
-
+    print(user)
+    print(comments)
     return render_template('event.html', comments=comments, event_id=event_id, event=event, user=user)
 
 
@@ -733,7 +730,6 @@ def update_comment():
         req = request.form
         if request.method == 'POST':
             comment = req.get("comment")
-            print(comment)
 
         if userTuple is None:
             update_command = f"UPDATE comment SET comment='{comment}' WHERE (user_number = {userid} and comment_id = {comment_id})"
