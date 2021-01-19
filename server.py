@@ -570,9 +570,9 @@ def signup():
             connection.commit()
         except:
             #flash('Try again')
-            connection.rollback()
+            # connection.rollback()
             return redirect("/signup")
-    else:
+
         return redirect("/login_page")
 
     return render_template("signup.html")
