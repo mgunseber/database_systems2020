@@ -78,6 +78,7 @@ INIT_STATEMENTS = [
 
 ]
 
+
 """
       IF NOT EXISTS (SELECT username FROM user_info WHERE (username='melisgunseber') ) ;
       BEGIN;

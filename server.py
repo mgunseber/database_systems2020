@@ -7,7 +7,7 @@ from flask import Flask, redirect, url_for, render_template, request, Blueprint,
 
 import psycopg2
 import psycopg2 as dbapi2
-from queries import select
+
 
 from psycopg2 import Error
 from psycopg2 import extensions
@@ -24,7 +24,6 @@ from bs4 import BeautifulSoup
 from app import app
 extensions.register_type(extensions.UNICODE)
 extensions.register_type(extensions.UNICODEARRAY)
-
 
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
