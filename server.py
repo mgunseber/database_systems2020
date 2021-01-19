@@ -14,7 +14,7 @@ from psycopg2 import extensions
 
 import binascii
 from werkzeug.urls import url_parse
-from operator import itemgetter
+
 
 import ssl
 import certifi
