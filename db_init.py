@@ -72,6 +72,12 @@ INIT_STATEMENTS = [
         event_type_number INTEGER REFERENCES event_type_id (event_type_id) NOT NULL,
         PRIMARY KEY (event_type_number, user_info)
 );
+    """,
+    """
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (1,'theater'),
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (2,'music'),
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (3,'online'),
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (4,'other')
     """
 
 
