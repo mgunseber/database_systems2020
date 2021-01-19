@@ -564,15 +564,15 @@ def signup():
         age = req.get("age")
         gender = req.get("gender")
 
-    try:
-        insert_command = "INSERT INTO user_info(username, password, email, name,age, gender, role) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-        cursor.execute(insert_command, (username, password,
-                                        email, name, age, gender, "user"))
-        connection.commit()
-    except:
-        flash('Try again')
-        connection.rollback()
-        return redirect("/signup")
+        try:
+            insert_command = "INSERT INTO user_info(username, password, email, name,age, gender, role) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            cursor.execute(insert_command, (username, password,
+                                            email, name, age, gender, "user"))
+            connection.commit()
+        except:
+            flash('Try again')
+            connection.rollback()
+            return redirect("/signup")
     else:
         return redirect("/login_page")
 
