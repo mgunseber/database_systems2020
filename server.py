@@ -60,7 +60,7 @@ for e_property in theater:
     command_select = f"SELECT event_type_id FROM event_type_id WHERE (event_type = '{word}')"
     cursor.execute(command_select)
     answer = cursor.fetchone()
-
+    print(answer)
     command_INSERT = f"INSERT INTO event(event_name, location, date1, event_type_number) VALUES('{eventName}','{eventLoc}','{eventDate}',(SELECT event_type_id FROM event_type_id WHERE (event_type = '{word}')))"
 
     try:
