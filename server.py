@@ -500,7 +500,21 @@ def theater_pageUpdate():
 
 @ app.route('/other')
 def other_page():
-    return render_template("other.html")
+    cookie = request.cookies.get("session_id")
+
+    user = None
+
+    if cookie is not None:
+        search_command = f"SELECT userid FROM session WHERE session_id = '{cookie}'"
+        cursor.execute(search_command)
+        userid = cursor.fetchone()[0]
+        user = {"user_id": userid}
+        search_command = f"SELECT role FROM user_info WHERE user_id = {userid}"
+        cursor.execute(search_command)
+        role = cursor.fetchone()[0]
+        user = {"role": role}
+
+    return render_template("other.html", user=user)
 
 
 @ app.route('/deleteEvent', methods=['POST', 'GET'])
