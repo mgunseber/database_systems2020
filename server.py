@@ -249,7 +249,7 @@ def profile():
             eventlist.append(favevent)
 
     elif userid is None:
-        return redirect('/login')
+        return redirect('/login_page')
     try:
         select_fav = f"SELECT event_type_id, event_type FROM favorite_type INNER JOIN event_type_id ON event_type_id.event_type_id = favorite_type.event_type_number WHERE user_info = {userid}"
         cursor.execute(select_fav)
@@ -334,7 +334,7 @@ def fav_type():
                 pass
             connection.commit()
     else:
-        return redirect('/login')
+        return redirect('/login_page')
     return redirect('/profile')
 
 
@@ -362,7 +362,7 @@ def profileUpdate():
                 pass
             connection.commit()
     else:
-        return redirect('/login')
+        return redirect('/login_page')
     return redirect("/profile")
 
 
@@ -532,7 +532,7 @@ def theater_pageDelete():
             connection.commit()
 
     else:
-        return redirect('/login')
+        return redirect('/login_page')
     return redirect(f'/theater?event_id={event_id}')
 
 
@@ -563,7 +563,7 @@ def signup():
         name = req.get("name")
         age = req.get("age")
         gender = req.get("gender")
-        print(email)
+
     try:
         insert_command = "INSERT INTO user_info(username, password, email, name,age, gender, role) VALUES (%s,%s,%s,%s,%s,%s,%s)"
         cursor.execute(insert_command, (username, password,
@@ -606,7 +606,7 @@ def like():
         answer = cursor.fetchone()[0]
 
     elif cookie is None:
-        return redirect('/login')
+        return redirect('/login_page')
     try:
         insert_command = "INSERT INTO like_info(event_num,user_num) VALUES(%s,%s)"
         cursor.execute(insert_command, (event_id, answer))
@@ -655,7 +655,7 @@ def event():
                 pass
 
     else:
-        return redirect('/login')
+        return redirect('/login_page')
     try:
         select_command = f"SELECT comment,comment_id,event_number,user_number,e.username,e.user_id,e.role from comment INNER JOIN user_info as e ON e.user_id = user_number WHERE event_number = {event_id}"
         cursor.execute(select_command)
@@ -707,7 +707,7 @@ def delete_event():
             connection.commit()
 
     else:
-        return redirect('/login')
+        return redirect('/login_page')
 
     return redirect(f"/event?event_id={event_id}")
 
@@ -748,11 +748,11 @@ def update_comment():
                 pass
             connection.commit()
     else:
-        return redirect('/login')
+        return redirect('/login_page')
 
     return redirect(f"/event?event_id={event_id}")
 
 
 if __name__ == "__main__":
-    app.secret_key = 'mysecretkey'
-    app.run()
+    #app.secret_key = 'mysecretkey'
+    app.run(debug=True)
