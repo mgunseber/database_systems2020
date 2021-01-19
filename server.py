@@ -553,7 +553,7 @@ def signup1():
     return render_template("signup.html", user=user)
 
 
-@ app.route('/signup', methods=['POST', 'GET'])
+@ app.route('/signup', methods=['POST'])
 def signup():
     req = request.form
     if request.method == 'POST':
@@ -572,9 +572,9 @@ def signup():
     except:
         flash('Try again')
         connection.rollback()
-        return redirect(url_for('signup'))
+        return redirect("/signup")
     else:
-        return redirect(url_for('login'))
+        return redirect("/login_page")
 
     return render_template("signup.html")
 
