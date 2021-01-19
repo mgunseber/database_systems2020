@@ -4,14 +4,14 @@ import db_init
 from db_init import initialize
 
 from flask import Flask, redirect, url_for, render_template, request, Blueprint, flash, Response, make_response
-from flask_login import LoginManager
+
 import psycopg2
 import psycopg2 as dbapi2
 from queries import select
 
 from psycopg2 import Error
 from psycopg2 import extensions
-from flask_login import login_user, logout_user, login_required
+
 import binascii
 from werkzeug.urls import url_parse
 from operator import itemgetter
@@ -20,13 +20,11 @@ import ssl
 import certifi
 import requests
 from bs4 import BeautifulSoup
-from flask_login import login_required, UserMixin
+
 from app import app
 extensions.register_type(extensions.UNICODE)
 extensions.register_type(extensions.UNICODEARRAY)
-lm = LoginManager(app)
-lm.login_view = 'login'
-lm.init_app(app)
+
 
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0

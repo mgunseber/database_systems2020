@@ -6,7 +6,6 @@ import ssl
 import certifi
 import requests
 from bs4 import BeautifulSoup
-from flask_login import UserMixin
 
 INIT_STATEMENTS = [
     """
