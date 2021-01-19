@@ -575,8 +575,6 @@ def signup():
     else:
         return redirect("/login_page")
 
-    return render_template("signup.html")
-
 
 @ app.route("/logout_page")
 def logout_page():
