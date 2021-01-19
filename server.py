@@ -752,4 +752,4 @@ def update_comment():
 
 if __name__ == "__main__":
     app.secret_key = 'mysecretkey'
-    app.run(debug=True)
+    app.run()

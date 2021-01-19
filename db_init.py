@@ -2,10 +2,7 @@ import os
 import sys
 
 import psycopg2 as dbapi2
-import ssl
-import certifi
-import requests
-from bs4 import BeautifulSoup
+
 
 INIT_STATEMENTS = [
     """
