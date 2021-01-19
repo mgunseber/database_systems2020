@@ -6,6 +6,13 @@ import psycopg2 as dbapi2
 
 INIT_STATEMENTS = [
     """
+    CREATE TABLE if not exists event_type_id (
+        event_type_id SERIAL NOT NULL,
+        event_type VARCHAR (150) NOT NULL,
+        PRIMARY KEY (event_type_id)
+);
+    """,
+    """
     CREATE TABLE if not exists event (
         event_id SERIAL NOT NULL,
         event_name VARCHAR (250) UNIQUE NOT NULL ,
@@ -15,17 +22,6 @@ INIT_STATEMENTS = [
         PRIMARY KEY (event_ID),
         FOREIGN KEY (event_type_number) REFERENCES event_type_id (event_type_id)
 
-);
-    """,
-    """
-    CREATE TABLE if not exists comment (
-        comment_id SERIAL NOT NULL,
-        event_number INTEGER NOT NULL,
-        user_number INTEGER NOT NULL,
-        comment TEXT NOT NULL,
-        PRIMARY KEY (comment_id),
-        FOREIGN KEY (user_number) REFERENCES user_info(user_id),
-        FOREIGN KEY (event_number) REFERENCES event(event_id)
 );
     """,
     """
@@ -42,18 +38,22 @@ INIT_STATEMENTS = [
 );
     """,
     """
+    CREATE TABLE if not exists comment (
+        comment_id SERIAL NOT NULL,
+        event_number INTEGER NOT NULL,
+        user_number INTEGER NOT NULL,
+        comment TEXT NOT NULL,
+        PRIMARY KEY (comment_id),
+        FOREIGN KEY (user_number) REFERENCES user_info(user_id),
+        FOREIGN KEY (event_number) REFERENCES event(event_id)
+);
+    """,
+    """
     CREATE TABLE if not exists session (
         session_id VARCHAR(250) NOT NULL,
         userid INTEGER NOT NULL,
         PRIMARY KEY (session_ID),
         FOREIGN KEY (userid) REFERENCES user_info(user_id)
-);
-    """,
-    """
-    CREATE TABLE if not exists event_type_id (
-        event_type_id SERIAL NOT NULL,
-        event_type VARCHAR (150) NOT NULL,
-        PRIMARY KEY (event_type_id)
 );
     """,
     """
