@@ -638,12 +638,14 @@ def event():
         search_command = f"SELECT userid FROM session WHERE session_id = '{cookie}'"
         cursor.execute(search_command)
         userid = cursor.fetchone()[0]
-        user = {"user_id": userid}
+        user = {}
+        user["user_id"] = userid
         try:
             selectcommand = f"SELECT role FROM user_info WHERE user_id = {userid}"
             cursor.execute(selectcommand)
-            role = cursor.fetchone()
-            user = {"role": role}
+            role = cursor.fetchone()[0]
+            user["role"] = role
+
         except:
             pass
 
