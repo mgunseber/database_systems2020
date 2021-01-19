@@ -156,9 +156,12 @@ def home_page():
     like_count = None
     username = []
     most_active = []
-    while (i < 7):
-        selected_events.append(event[i])
-        i += 1
+    try:
+        while (i < 7):
+            selected_events.append(event[i])
+            i += 1
+    except:
+        pass
     try:
         select_command_comment = "SELECT user_id,username, COUNT(*) as comment_count FROM user_info LEFT JOIN comment as l ON l.user_number=user_id GROUP BY user_id"
         cursor.execute(select_command_comment)
