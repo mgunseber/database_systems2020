@@ -639,6 +639,13 @@ def event():
         cursor.execute(search_command)
         userid = cursor.fetchone()[0]
         user = {"user_id": userid}
+        try:
+            selectcommand = f"SELECT role FROM user_info WHERE user_id = {userid}"
+            cursor.execute(selectcommand)
+            role = cursor.fetchone()
+            user = {"role": role}
+        except:
+            pass
 
         req = request.form
         if request.method == 'POST':

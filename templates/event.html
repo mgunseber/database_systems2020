@@ -44,7 +44,7 @@
       {% for c in comments %}
     <div class="col-md-12">
 
-        {% if user and (c.user_number == user.user_id or c.user.role == "admin") %}
+        {% if user and (c.user_number == user.user_id or user.role == "admin") %}
         <div class="comment-box">
             <form action="/updateComment?event_id={{event_id}}&comment_id={{c.comment_id}}" method="POST">
               <span>{{c.user.username}}</span>
@@ -68,7 +68,7 @@
  </div>
 
       {% endfor %}
-      
+
     </div>
 
   </div>
