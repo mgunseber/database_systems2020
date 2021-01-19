@@ -74,9 +74,17 @@ INIT_STATEMENTS = [
 );
     """,
     """
-    INSERT INTO event_type_id (event_type_id,event_type) VALUES (1,'theater');
-    INSERT INTO event_type_id (event_type_id,event_type) VALUES (2,'music');
-    INSERT INTO event_type_id (event_type_id,event_type) VALUES (3,'online');
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (1,'theater')
+    
+    """,
+    """
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (2,'music')
+    
+    """,
+    """
+    INSERT INTO event_type_id (event_type_id,event_type) VALUES (3,'online')
+    """,
+    """
     INSERT INTO event_type_id (event_type_id,event_type) VALUES (4,'other')
     """
 
