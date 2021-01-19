@@ -1,3 +1,9 @@
 Flask
 psycopg2-binary
 gunicorn
+beautifulSoup4
+requests
+resquests
+requests==2.6.0
+certifi
+lxml

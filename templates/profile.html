@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-7">
-        <b>Your Favourite Events</b>
+        <div class="user-info-title">Your Favourite Events</div>
         <table class="table1 fav-table">
             <thead>
                 <tr>
@@ -32,30 +32,88 @@
         </table>
     </div>
     <div class="col-md-5">
-        <b>User Information</b>
-        <table class="table2">
+        <div class="user-info-title">User Information</div>
+        <form action="/profileUpdate?user_id={{user.user_id}}" class="user-profile-form" method="POST">
+            <div class="form-group">
+                <p>Username : </p>
+                <input type="text" id="username" name="username" value={{user.username}}>
+            </div>
+            <div class="form-group">
+                <p>Name : </p>
+                <input type="text" id="name" name="name" value='{{user.name}}'>
+            </div>
+            <div class="form-group">
+                <p>Age : </p>
+                <input type="number" id="age" name="age" value={{user.age}}>
+            </div>
+            <div class="form-group">
+                <p>Email : </p>
+                <input type="text" id="email" name="email" value={{user.email}}>
+            </div>
+            <div class="form-group">
+                <p>Gender : </p>
+                <input type="text" id="gender" name="gender" value={{user.gender}}>
+            </div>
+            <button type="submit">Update My Information</button>
+        </form>
+        <form action="/profileDelete?user_id={{user.user_id}}" method="POST">
+            <button type="submit" class="full-btn">Delete My Account</button>
+        </form>
+    </div>
 
-
+</div>
+<div class="row">
+    <div class="col-md-5">
+        {% if fav_type %}
+        <div class="user-info-title">Your favorite types are:</div>
+        <table class="user-fav" class="table-danger">
+            {% for f in fav_type%}
             <tr>
-                <th scope="row">Name</th>
-                <td>{{user.name}}</td>
-            </tr>
+                <th>{{f[1]}}</th>
 
-            <tr>
-                <th scope="row">Age</th>
-                <td>{{user.age}}</td>
             </tr>
-            <tr>
-                <th scope="row">e_mail</th>
-                <td>{{user.email}}</td>
-            </tr>
-            <tr>
-                <th scope="row">Gender</th>
-                <td>{{user.gender}}</td>
-            </tr>
-
-
+            {% endfor %}
         </table>
     </div>
+    <div class="col-md-7">
+        <div class="user-info-title">Your suggestions are:</div>
+        <table class="user-fav" class="table-danger">
+            <thead>
+                <tr>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Date</th>
+                    <th scope="col">Event Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in suggestion %}
+                <tr>
+                    <td>{{f[0]}}</td>
+                    <td>{{f[1]}}</td>
+                    <td>{{f[2]}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    {% else %}
+    <div class="user-info-title">Please Select your Favorite Types</div>
+    <form action="/fav_type?user_id={{user.user_id}}" method="POST">
+        <input type="checkbox" id="music" name="music" value="music">
+        <label class="user-fav-title" for="music">MUSIC</label><br>
+        <input type="checkbox" id="theater" name="theater" value="theater">
+        <label class="user-fav-title" for="theater">PERFORMING ARTS</label><br>
+        <input type="checkbox" id="online" name="online" value="online">
+        <label class="user-fav-title" for="online">ONLINE</label><br>
+        <input type="checkbox" id="other" name="other" value="other">
+        <label class="user-fav-title" for="other">CINEMA</label><br><br>
+        <input class="user-fav-button" type="submit" value="Submit">
+    </form>
+    {% endif %}
+
+
+
 </div>
 {% endblock %}

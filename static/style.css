@@ -89,12 +89,13 @@
 .site-title{
     font-size:36px;
     margin-bottom: 30px;
+    font-weight: bold;
 }
 .site-title.blue{
     color: #8e62c1;
 }
 .site-title.purple{
-    color: #825ac3;
+    color:  #825ac3;
 }
 .site-title-mini{
     font-size: 20px;
@@ -149,7 +150,8 @@
 
 .more-active-users{
     margin-top: 40px;
-    border: 5px solid #ddd;
+    background-color:rgb(190, 172, 172);
+    border: 7px solid #825ac3;
     margin-bottom: 30px;
     padding: 20px;
 }
@@ -166,6 +168,9 @@
     font-weight: bold;
 }
 
+.stripped{
+  text-decoration: underline;
+}
 
 .more-active-users ul li:hover{
     color: #5c328a;
@@ -237,28 +242,44 @@ footer{
     margin-top: 50px;
 }
 
-.table2{
+.table2,.user-profile-form{
     
     background-color: rgb(194, 236, 229);
     border-collapse: collapse;
     border: 3px solid black;
     align-self: flex-end;
-    margin-left: 200px;
-    
+    padding:20px;
+    margin-bottom:15px;
     
     border-spacing: 5px;
+}
+
+
+.user-profile-form .form-group input{
+  width:100%;
+  padding:0 15px;
+  border:1px solid #ddd;
+  height:40px;
+ }
+
+ .user-profile-form button{
+   width:100%;
+ }
+
+.user-profile-form .form-group p{
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
 .table2 tr td,.table2 tr th{
     padding:10px;
 }
 
-.col-md-5 b{ 
+.user-info-title{ 
     color: rgb(194, 236, 229);
     text-shadow: 2px 2px black;
     font-weight: bold;
-    margin-left: 200px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-size: 25px;
 }
 .col-md-7 b{ 
@@ -394,3 +415,98 @@ footer{
   .update-comment-form input{
     width:100%;
   }
+
+  .comment-box{
+    margin-bottom:20px;
+  }
+  .comment-box form{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .comment-box form span{
+    display:block;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+    width:100%;
+  }
+  .comment-box form textarea{
+    width:calc(100% - 170px);
+    padding:20px;
+    min-height:140px;
+    resize:none;
+  }
+  .comment-box form button{
+    margin-left:auto;
+    max-width:150px;
+    height:60px;
+    padding:0;
+  }
+  .comment-box .delete-form{
+    margin-top:-60px;
+  }
+
+  .comment-content{
+    background:#fff;
+    color:#333;
+  }
+  .comment-content span{
+    background:rgb(238, 83, 83);
+    color:#fff;
+    padding:10px;
+    font-weight:bold;
+    margin-bottom:20px;
+    display:block;
+  }
+  .comment-content span i{
+    font-size:12px;
+    font-weight:normal;
+  }
+  .full-btn{
+    width:100%;
+  }
+  .user-fav{
+    background-color: rgb(194, 236, 229);
+    border-collapse: collapse;
+    border: 3px solid black;
+    align-self: flex-end;
+    padding:20px;
+    margin-bottom:15px;
+    
+    border-spacing: 8px;
+  }
+.user-fav tr th{
+  padding:10px;
+  padding-right:60px;
+  padding-left:30px;
+  
+  
+}
+
+.user-fav-title{ 
+  color: rgb(194, 236, 229);
+  text-shadow: 2px 2px black;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.user-fav-button{
+  background:rgb(238, 83, 83);
+  color:#fff;
+  padding:10px 20px;
+  margin-bottom:30px;
+  font-weight:bold;
+  border:none;
+  width:150px;
+}
+
+.user-fav tr td{
+  padding: 10px;
+  padding-left: 30px;
+    width: 500px;
+}
+.user-fav th{
+    width: 70px;
+}

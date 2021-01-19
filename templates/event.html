@@ -40,64 +40,33 @@
     <div class="site-title purple"><i class="fas fa-comment"></i> COMMENTS</div>
     <div class="row">
 
-
+     
       {% for c in comments %}
+    <div class="col-md-12">
 
         {% if user and (c.user_number == user.user_id or c.user.role == "admin") %}
-          <div>
-            <form action="/updateComment?event_id={{event_id}}&comment_id={{c.comment_id}}">
+        <div class="comment-box">
+            <form action="/updateComment?event_id={{event_id}}&comment_id={{c.comment_id}}" method="POST">
               <span>{{c.user.username}}</span>
-              <textarea id="comment">{{c.comment}}</textarea>
-              <button type="submit">Update My Comments</button>
+              <textarea id="comment" type="comment" name="comment">{{c.comment}}</textarea>
+              <button type="submit">Update My Comment</button>
             </form>
-            <form action="/deleteComment?event_id={{event_id}}&comment_id={{c.comment_id}}" method="POST">
-              <button type="submit">Delete My Comments</button>
+            <form class="delete-form" action="/deleteComment?event_id={{event_id}}&comment_id={{c.comment_id}}" method="POST">
+              <button type="submit">Delete My Comment</button>
             </form>
-          </div>
+          
+           </div>
         {% else %}
-          <span>{{c.user.username}}</span>
+          <div class="comment-box comment-content">
+          <span><i>Written by </i> {{c.user.username}}</span>
           <p>
             {{c.comment}}
           </p>
+           </div>
         {% endif %}     
+        
+ </div>
 
-
-      <!-- 
-      <div class="col-md-12">
-        <div class="comment-box">
-          <b>
-            c[0]
-          </b>
-        </div>
-        <div class="col-md-12">
-          <div class="button-wrapper">
-            <button class="update-comment-btn">Update My Comment</button>
-
-            <form method="POST" action="/deleteComment?event_id={{event_id}}">
-
-              <button type="submit">Delete My Comments</button>
-
-            </form>
-
-
-          </div>
-          <form method="POST" action="/updateComment?event_id={{event_id}}" class="update-comment-form">
-
-
-            <div class="field">
-              <div class="control">
-                <input class="input is-large" type="text" name="comment" id="comment"
-                  placeholder="Write your updated comment here" autofocus="">
-              </div>
-            </div>
-
-          </form>
-
-
-
-        </div>
-
-      </div>-->
       {% endfor %}
 
 
@@ -107,9 +76,5 @@
   </div>
 
 </div>
-<script>
-  $('.update-comment-btn').click(function () {
-    $('.update-comment-form').slideToggle();
-  })
-</script>
+
 {% endblock %}

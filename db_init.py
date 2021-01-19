@@ -76,7 +76,15 @@ INIT_STATEMENTS = [
     """
 
 
+
 ]
+
+"""
+      IF NOT EXISTS (SELECT username FROM user_info WHERE (username='melisgunseber') ) ;
+      BEGIN;
+      INSERT INTO user_info( username,password,email,name,age,gender,role) VALUES ('melisgunseber',12345,'melis.gunseber@email.com','melis',21,'female','admin') ;
+      END
+      """
 
 
 def initialize(url):
@@ -87,8 +95,6 @@ def initialize(url):
 
         cursor.close()
 
-
-# conn.commit()
 
 if __name__ == "__main__":
     url = os.getenv("DATABASE_URL")
