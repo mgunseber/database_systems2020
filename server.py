@@ -29,10 +29,6 @@ extensions.register_type(extensions.UNICODEARRAY)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
-#os.environ['DATABASE_URL'] = "dbname='postgres' user='postgres' host='localhost' password='1234' port='5432'"
-# initialize(os.environ.get('DATABASE_URL'))
-
-
 url = os.getenv("DATABASE_URL")
 print(url)
 connection = dbapi2.connect(url)
@@ -391,7 +387,7 @@ def login():
         return res
 
     except:
-        #flash('Please check your login details and try again')
+
         return redirect('/login_page')
 
 
@@ -583,8 +579,6 @@ def signup():
                                             email, name, age, gender, "user"))
             connection.commit()
         except:
-            #flash('Try again')
-            # connection.rollback()
             return redirect("/signup")
 
         return redirect("/login_page")
@@ -603,7 +597,6 @@ def logout_page():
         connection.commit()
     except:
         pass
-        #flash('Login first to logout')
 
     response.delete_cookie('session_id')
     return response
@@ -774,5 +767,4 @@ def update_comment():
 
 
 if __name__ == "__main__":
-    #app.secret_key = 'mysecretkey'
     app.run(debug=True)
