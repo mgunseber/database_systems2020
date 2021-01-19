@@ -29,8 +29,8 @@ extensions.register_type(extensions.UNICODEARRAY)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
-os.environ['DATABASE_URL'] = "dbname='postgres' user='postgres' host='localhost' password='1234' port='5432'"
-initialize(os.environ.get('DATABASE_URL'))
+#os.environ['DATABASE_URL'] = "dbname='postgres' user='postgres' host='localhost' password='1234' port='5432'"
+# initialize(os.environ.get('DATABASE_URL'))
 
 
 url = os.getenv("DATABASE_URL")
