@@ -391,7 +391,7 @@ def login():
         return res
 
     except:
-        flash('Please check your login details and try again')
+        #flash('Please check your login details and try again')
         return redirect('/login_page')
 
 
@@ -570,7 +570,7 @@ def signup():
                                             email, name, age, gender, "user"))
             connection.commit()
         except:
-            flash('Try again')
+            #flash('Try again')
             connection.rollback()
             return redirect("/signup")
     else:
@@ -589,7 +589,8 @@ def logout_page():
         cursor.execute(delete_command, (cookie))
         connection.commit()
     except:
-        flash('Login first to logout')
+        pass
+        #flash('Login first to logout')
 
     response.delete_cookie('session_id')
     return response
